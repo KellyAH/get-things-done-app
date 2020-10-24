@@ -1,5 +1,7 @@
 # README
 
+See [planning doc](https://docs.google.com/document/d/1RIufe3PNcNIkB4iJLFXdbU5d5Q76CMfuOXUahPPNdKc/edit?ts=5f946899#)
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
