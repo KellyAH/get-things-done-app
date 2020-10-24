@@ -1,0 +1,34 @@
+<h1>Welcome to The Get Things Done App.</h1>
+
+</br>
+</br>
+</br>
+
+
+<%= form_with(url: "/thoughts", method: "post") do %>
+  <%= label_tag(:q, @message) %>
+  </br>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Submit") %>
+<% end %>
+
+<table>
+  <thead>
+  <tr>
+    <th>My Thoughts</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  </br>
+  <tbody>
+  <%# @thoughts.each do |thought| %>
+<!--    <tr>-->
+<!--      <td><%#= thought.description %></td>-->
+<!--      <td><%#= link_to 'Show', thought %></td>-->
+<!--      <td><%#= link_to 'Edit', edit_thought_path(thought) %></td>-->
+<!--      <td><%#= link_to 'Destroy', thought, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+<!--    </tr>-->
+  <%# end %>
+  </tbody>
+</table>
