@@ -1,26 +1,10 @@
-# README
+## Personal development app based on [GTD](https://gettingthingsdone.com/what-is-gtd/) methodology
+An app to manage all thoughts, ideas, todos and tasks. Collect, Refine, Remove, Reference and Schedule to free up your space in the mind.
 
 See [planning doc](https://docs.google.com/document/d/1RIufe3PNcNIkB4iJLFXdbU5d5Q76CMfuOXUahPPNdKc/edit?ts=5f946899#)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Architecture and models
 
-Things you may want to cover:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Development
+	See Gemfile 
