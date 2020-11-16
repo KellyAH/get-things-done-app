@@ -27,7 +27,7 @@
 
       <!--V1 - go to new task page</td>-->
       <!--why can't I use button_to ?</td>-->
-      <td><%= link_to 'Turn into a Task', new_task_path %></td>
+      <td><%= link_to 'Turn into a Task', new_task_path(id: thought.id) %></td>
 
       <!--V2 - make it a button and use the method</td>-->
       <!-- <td><%#= button_to 'Turn into a Task', thought, method: :convert_to_task %></td>-->

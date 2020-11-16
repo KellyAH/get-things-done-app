@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   def new
     @task = Task.new(priority: "medium")
+    @thought = Thought.find(params[:id])
   end
 
   def create
@@ -19,5 +20,3 @@ class TasksController < ApplicationController
     params.require(:task).permit(:description, :priority)
   end
 end
-#TODO user can create a task from a thought move decsiption from though to task
-# create empty task

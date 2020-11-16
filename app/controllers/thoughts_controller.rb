@@ -25,7 +25,6 @@ class ThoughtsController < ApplicationController
   # POST /thoughts.json
   def create
     @thought = Thought.new(thought_params)
-
     respond_to do |format|
       if @thought.save
         format.html { redirect_to @thought, notice: 'Thought was successfully created.' }
@@ -60,6 +59,13 @@ class ThoughtsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # goes to GET /tasks/new
+  # passes thought description into task description
+  # DELETE /thoughts/[:id] once task is successfully created
+  def convert_to_task
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
