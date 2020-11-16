@@ -31,3 +31,23 @@
   <% end %>
   </tbody>
 </table>
+
+
+<table>
+  <thead>
+  <tr>
+    <th>My Tasks</th>
+    <th colspan="1">Priority</th>
+  </tr>
+  </thead>
+
+  </br>
+  <tbody>
+  <% @tasks.each do |task| %>
+    <tr>
+      <td><%= task.description %></td>
+      <td><%= task.priority %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
