@@ -7,10 +7,11 @@ class Thought < ApplicationRecord
     low: "low", 
     medium: "medium", 
     high: "high" 
-  }, _suffix: true
+  }, _prefix: true
 
   enum status: { 
-    to_do: "to_do", 
+    none: "none",
+    todo: "todo",
     in_progress: "in_progress", 
     complete: "complete", 
     archived: "archived", 
