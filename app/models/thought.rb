@@ -8,7 +8,9 @@ class Thought < ApplicationRecord
     medium: "medium", 
     high: "high" 
   }, _prefix: true
-
+# TODO: Refactor by Removing the none key value pair 
+# Make sure if anyone does not choose any data from enum
+# Application should Handle nil
   enum status: { 
     none: "none",
     todo: "todo",
@@ -19,3 +21,4 @@ class Thought < ApplicationRecord
   }, _prefix: true
 
 end
+
