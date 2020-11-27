@@ -4,7 +4,7 @@ class ThoughtsController < ApplicationController
   # GET /thoughts
   # GET /thoughts.json
   def index
-    @thoughts = Thought.all
+    @thoughts = Thought.all    
   end
 
   # GET /thoughts/1
