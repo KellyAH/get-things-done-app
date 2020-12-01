@@ -4,7 +4,7 @@ An app to manage all thoughts, ideas, todos and tasks. Collect, Refine, Remove, 
 See [planning doc](https://docs.google.com/document/d/1RIufe3PNcNIkB4iJLFXdbU5d5Q76CMfuOXUahPPNdKc/edit?ts=5f946899#)
 
 ### Architecture and models
-
+Database diagram https://dbdiagram.io/d/5f9b12403a78976d7b79bc81
 
 ### Development
-	See Gemfile 
+	See Gemfile
