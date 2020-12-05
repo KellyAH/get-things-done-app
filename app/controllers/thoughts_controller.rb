@@ -1,15 +1,18 @@
 class ThoughtsController < ApplicationController
-  before_action :set_thought, only: [:show, :edit, :update, :destroy]
+  #before_action :set_thought, only: [:show, :edit, :update, :destroy]
 
   # GET /thoughts
   # GET /thoughts.json
   def index
-    @thoughts = Thought.all    
+    u = User.last
+    @thoughts = u.thoughts
   end
 
   # GET /thoughts/1
   # GET /thoughts/1.json
   def show
+    u = User.last
+    @thought = Thought.find(params[:id])
   end
 
   # GET /thoughts/new
@@ -24,7 +27,8 @@ class ThoughtsController < ApplicationController
   # POST /thoughts
   # POST /thoughts.json
   def create
-    @thought = Thought.new(thought_params)
+    user = User.last
+    @thought = user.thoughts.build(thought_params)
 
     respond_to do |format|
       if @thought.save
@@ -54,6 +58,7 @@ class ThoughtsController < ApplicationController
   # DELETE /thoughts/1
   # DELETE /thoughts/1.json
   def destroy
+
     @thought.destroy
     respond_to do |format|
       format.html { redirect_to thoughts_url, notice: 'Thought was successfully destroyed.' }
