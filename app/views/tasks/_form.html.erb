@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_field :description, value: @thought.description %>
+    <%= form.text_field :description %>
   </div>
 
   <div class="field">
@@ -21,6 +21,8 @@
   </div>
 
   <div class="actions">
+    <!-- pass thought id data so a thought can be deleted in POST call to create task -->
+    <%= hidden_field_tag(:thought_id, params[:thought_id]) %>
     <%= form.submit %>
   </div>
 <% end %>

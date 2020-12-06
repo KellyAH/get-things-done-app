@@ -1,3 +1,5 @@
+<p id="notice"><%= notice %></p>
+
 <h1>Welcome to The Get Things Done App.</h1>
 
 </br>
@@ -39,18 +41,7 @@
       <td><%= link_to 'Show', thought %></td>
       <td><%= link_to 'Edit', edit_thought_path(thought) %></td>
       <td><%= link_to 'Destroy', thought, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
-      <!--V1 - go to new task page</td>-->
-      <!--why can't I use button_to ?</td>-->
-      <td><%= link_to 'Turn into a Task', new_task_path(id: thought.id) %></td>
-
-      <!--V2 - make it a button and use the method</td>-->
-      <!-- <td><%#= button_to 'Turn into a Task', thought, method: :convert_to_task %></td>-->
-
-      <!--V3 -  use the method</td>-->
-      <!-- <td><%#= button_to 'Turn into a Task', thought, method: :convert_to_task %></td>-->
-
-
+      <td><%= link_to 'Turn into a Task', new_task_path(thought_id: thought.id) %></td>
     </tr>
   <% end %>
   </tbody>

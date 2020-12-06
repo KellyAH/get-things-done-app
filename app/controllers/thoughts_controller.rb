@@ -60,13 +60,6 @@ class ThoughtsController < ApplicationController
     end
   end
 
-  # goes to GET /tasks/new
-  # passes thought description into task description
-  # DELETE /thoughts/[:id] once task is successfully created
-  def convert_to_task
-  end
-
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_thought
