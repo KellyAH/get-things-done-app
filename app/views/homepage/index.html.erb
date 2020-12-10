@@ -3,27 +3,10 @@
 <h1>Welcome to The Get Things Done App.</h1>
 
 </br>
-
-<%#= TO FIX: try to make form create new thoughts %>
-<%#= https://www.theodinproject.com/courses/ruby-on-rails/lessons/form-basics %>
-<%= form_with(url: "/thoughts", method: "post") do %>
-  <%= label_tag(:description, "Write 3 or more things on your mind right now.") %>
-  <%= text_field_tag(:description) %>
-  <%= submit_tag("Create") %>
+<%= form_with model: @new_thought do |form| %>
+  <%= form.text_field :description %>
+  <%= form.button "Create" %>
 <% end %>
-
-<%#= NOT WORK %>
-<%#= form_with model: @thought do |form| %>
-<%#= form.text_field :description %>
-<%#= form.submit "Create" %>
-<%# end %>
-
-<%#= ORIGINAL CODE %>
-<%#= form_with(url: "/thoughts", method: "post") do %>
-<%#= label_tag(:q, "Write 3 or more things on your mind now.") %>
-<%#= text_field_tag(:q) %>
-<%#= submit_tag("Submit") %>
-<%# end %>
 
 <table>
   <thead>
@@ -62,6 +45,7 @@
     <tr>
       <td><%= task.description %></td>
       <td><%= task.priority %></td>
+      <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
   </tbody>

@@ -12,11 +12,6 @@ class ThoughtsController < ApplicationController
   def show
   end
 
-  # GET /thoughts/new
-  def new
-    @thought = Thought.new
-  end
-
   # GET /thoughts/1/edit
   def edit
   end
@@ -27,7 +22,7 @@ class ThoughtsController < ApplicationController
     @thought = Thought.new(thought_params)
     respond_to do |format|
       if @thought.save
-        format.html { redirect_to @thought, notice: 'Thought was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Thought was successfully created.' }
         format.json { render :show, status: :created, location: @thought }
       else
         format.html { render :new }
@@ -55,7 +50,7 @@ class ThoughtsController < ApplicationController
   def destroy
     @thought.destroy
     respond_to do |format|
-      format.html { redirect_to thoughts_url, notice: 'Thought was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Thought was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
