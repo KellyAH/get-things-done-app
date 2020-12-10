@@ -1,3 +1,78 @@
-// Place all the styles related to the Thoughts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  line-height: 12px;
+  box-sizing: border-box;
+}
+
+.root {
+  display: flex;
+  height: 100%;
+}
+
+.thought {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 15% auto;
+}
+
+.thought__input {
+  margin-bottom: 3%;
+  font-size: 16px;
+  display: block;
+  border: 1px solid #555555;
+  border-radius: 3px;
+  outline: none;
+  padding: 1rem;
+  width: 93%;
+  &:focus {
+    border-color: rgb(199, 199, 199);
+  }
+}
+
+.thought__submit {
+  width: 24%;
+  outline: none;
+  border: 1px solid #555555;
+  padding: 0.5rem;
+  border-radius: 3px;
+  font-size: 15px;
+  background: #4d4d4d;
+  color: #ffffff;
+  cursor: pointer;
+  &:hover {
+    background: #3f3f3f;
+    color: rgb(230, 230, 230);
+  }
+}
+
+.list_container {
+  border-bottom: 1px solid #555555;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 3%;
+}
+
+.thought__actions {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: self-end;
+  li {
+    padding: 10px;
+    a {
+      text-decoration: none;
+    }
+  }
+  li:first-child {
+    padding-left: 0;
+  }
+}
