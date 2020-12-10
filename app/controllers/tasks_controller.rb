@@ -24,7 +24,16 @@ class TasksController < ApplicationController
       end
     end
   end
-  
+
+  #TODO add edit functionality
+
+  # DELETE /tasks/1
+  def destroy
+    @task = Task.find(params[:id])
+    @task.destroy
+    redirect_to root_path, notice: 'Task was successfully destroyed.'
+  end
+
 
   private
 
