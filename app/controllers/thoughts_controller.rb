@@ -1,27 +1,29 @@
 class ThoughtsController < ApplicationController
-  #before_action :set_thought, only: [:show, :edit, :update, :destroy]
+  before_action :set_thought, only: [:show, :edit, :update, :destroy]
 
   # GET /thoughts
-  # GET /thoughts.json
   def index
-    u = User.last
-    @thoughts = u.thoughts
+    user = User.last
+    @thoughts = user.thoughts
   end
 
   # GET /thoughts/1
   # GET /thoughts/1.json
   def show
-    u = User.last
-    @thought = Thought.find(params[:id])
+    user = User.last
+    @thought = user.thoughts.find(params[:id])
   end
 
   # GET /thoughts/new
   def new
-    @thought = Thought.new
+    user = User.last
+    @thought = user.thoughts.new
   end
 
   # GET /thoughts/1/edit
   def edit
+    user = User.last
+    @thought = user.thoughts.find(params[:id])
   end
 
   # POST /thoughts
@@ -30,40 +32,33 @@ class ThoughtsController < ApplicationController
     user = User.last
     @thought = user.thoughts.build(thought_params)
 
-    respond_to do |format|
-      if @thought.save
-        format.html { redirect_to @thought, notice: 'Thought was successfully created.' }
-        format.json { render :show, status: :created, location: @thought }
-      else
-        format.html { render :new }
-        format.json { render json: @thought.errors, status: :unprocessable_entity }
-      end
+    if @thought.save
+      flash[:success] = "You have successfully created thoughts"
+      redirect_to root_path
+    else
+      flash.now[:error] = "There is an error creating thought"
+      render 'thoughts/show'
     end
+
   end
 
   # PATCH/PUT /thoughts/1
-  # PATCH/PUT /thoughts/1.json
   def update
-    respond_to do |format|
-      if @thought.update(thought_params)
-        format.html { redirect_to @thought, notice: 'Thought was successfully updated.' }
-        format.json { render :show, status: :ok, location: @thought }
-      else
-        format.html { render :edit }
-        format.json { render json: @thought.errors, status: :unprocessable_entity }
-      end
-    end
+    user = User.last
+    @thought = user.thoughts.find(params[:id])
+    @thought.update thought_params
+
+    redirect_to root_path
+
   end
 
   # DELETE /thoughts/1
-  # DELETE /thoughts/1.json
-  def destroy
 
+  def destroy
+    @user = User.last
+    @thought = @user.thoughts.find(params[:id])
     @thought.destroy
-    respond_to do |format|
-      format.html { redirect_to thoughts_url, notice: 'Thought was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to root_path
   end
 
   private
