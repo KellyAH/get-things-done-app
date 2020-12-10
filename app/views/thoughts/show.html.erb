@@ -1,9 +1,11 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @thought.description %>
-</p>
-
-<%= link_to 'Edit', edit_thought_path(@thought) %> |
-<%= link_to 'Back', thoughts_path %>
+<div class="root">
+  <div class="thought">
+    <p id="notice"><%= notice %></p>
+    <p>
+      <strong>Description:</strong>
+      <%= @thought.description %>
+    </p>
+    <span><%= link_to 'Edit', edit_thought_path(@thought) %> |
+    <%= link_to 'Back', thoughts_path %></span>
+  </div>
+</div>

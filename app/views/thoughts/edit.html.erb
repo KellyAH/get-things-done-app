@@ -1,6 +1,12 @@
-<h1>Editing Thought</h1>
+<div class="root">
+  <div class="thought">
 
-<%= render 'form', thought: @thought %>
+  <h1>Edit your thought</h1>
 
-<%= link_to 'Show', @thought %> |
-<%= link_to 'Back', thoughts_path %>
+  <%= render 'form', thought: @thought %>
+  <span>
+    <%= link_to 'Show', @thought %> |
+    <%= link_to 'Back', thoughts_path %>
+  </span>
+</div>
+</div>

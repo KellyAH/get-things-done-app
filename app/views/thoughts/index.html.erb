@@ -1,29 +1,19 @@
-<p id="notice"><%= notice %></p>
-
-<h1>My Thoughts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  
-
-  <tbody>
-    <% @thoughts.each do |thought| %>
-      <tr>
-        <td><%= thought.description %></td>
-        <td><%= link_to 'Show', thought %></td>
-        <td><%= link_to 'Edit', edit_thought_path(thought) %></td>
-        <td><%= link_to 'Destroy', thought, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="root">
+  <div class="thought">
+    <%= form_with model: Thought.new do |form| %>
+      <%= form.text_field :description,  placeholder: "Capture your thoughts", class: 'thought__input', :required => true %>
+      <%= form.submit "Add new thought",  class: 'thought__submit' %>
     <% end %>
-  </tbody>
-</table>
 
-<br>
-
-<%= link_to 'New Thought', new_thought_path %>
+    <% @thoughts.each do |thought| %>
+      <div class="list_container">
+        <p><%= thought.description %></p>
+        <ul class="thought thought__actions">
+          <li><%= link_to 'Show', thought %></li>
+          <li><%= link_to 'Edit', edit_thought_path(thought) %></li>
+          <li><%= link_to 'Destroy', thought, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+</div>
