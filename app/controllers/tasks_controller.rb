@@ -7,6 +7,17 @@ class TasksController < ApplicationController
     end
   end
 
+  # GET /tasks/1
+  def show
+    @task = Task.find(params[:id])
+  end
+
+  # GET /tasks/1/edit
+  def edit
+    @task = Task.find(params[:id])
+  end
+
+  # create task from thought or /tasks/new
   def create
     ActiveRecord::Base.transaction do
       @task = Task.new(task_params)
@@ -25,7 +36,18 @@ class TasksController < ApplicationController
     end
   end
 
-  #TODO add edit functionality
+  def update
+    respond_to do |format|
+      @task = Task.find(params[:id])
+      if @task.update(task_params)
+        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+        format.json { render :show, status: :ok, location: @task }
+      else
+        format.html { render :edit }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # DELETE /tasks/1
   def destroy
