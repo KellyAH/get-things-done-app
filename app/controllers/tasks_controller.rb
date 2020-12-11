@@ -7,6 +7,7 @@ class TasksController < ApplicationController
     end
   end
 
+  # TODO refactor show and edit actions having same code. how to make this DRY?
   # GET /tasks/1
   def show
     @task = Task.find(params[:id])
@@ -19,6 +20,8 @@ class TasksController < ApplicationController
 
   # create task from thought or /tasks/new
   def create
+    # This makes the create task and destroy thought into 1 commit transaction so if either fails
+    # the whole action of create and destroy doesn't leave data in a bad area.
     ActiveRecord::Base.transaction do
       @task = Task.new(task_params)
       if @task.save
