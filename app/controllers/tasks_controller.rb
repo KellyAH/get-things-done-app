@@ -1,4 +1,7 @@
 class TasksController < ApplicationController
+  before_action :set_task, only: [:show, :edit, :update, :destroy]
+
+
   def new
     @task = Task.new(priority: "medium")
     if params[:thought_id]
@@ -7,15 +10,12 @@ class TasksController < ApplicationController
     end
   end
 
-  # TODO refactor show and edit actions having same code. how to make this DRY?
   # GET /tasks/1
   def show
-    @task = Task.find(params[:id])
   end
 
   # GET /tasks/1/edit
   def edit
-    @task = Task.find(params[:id])
   end
 
   # create task from thought or /tasks/new
@@ -59,8 +59,11 @@ class TasksController < ApplicationController
     redirect_to root_path, notice: 'Task was successfully destroyed.'
   end
 
-
   private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_task
+    @task = Task.find(params[:id])
+  end
 
   # Only allow a list of trusted parameters through.
   def task_params
