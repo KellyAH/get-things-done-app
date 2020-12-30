@@ -59,6 +59,7 @@ class TasksController < ApplicationController
     redirect_to root_path, notice: 'Task was successfully destroyed.'
   end
 
+  # TODO: fix indents
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_task
