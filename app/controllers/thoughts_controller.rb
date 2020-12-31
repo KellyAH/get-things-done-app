@@ -23,10 +23,8 @@ class ThoughtsController < ApplicationController
     respond_to do |format|
       if @thought.save
         format.html { redirect_to root_path, notice: 'Thought was successfully created.' }
-        format.json { render :show, status: :created, location: @thought }
       else
-        format.html { render :new }
-        format.json { render json: @thought.errors, status: :unprocessable_entity }
+        format.html { redirect_to root_path, alert: "Thought failed to be created because: #{@thought.errors.full_messages.join(",")}."  }
       end
     end
   end
