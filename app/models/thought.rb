@@ -1,6 +1,8 @@
 class Thought < ApplicationRecord
-  belongs_to :user
+  # set optional: true so a thought can be created without a user
+  belongs_to :user, optional: true
   has_one :user_category
+  validates_presence_of :description
 
   enum priority: { 
     none:"none", 
