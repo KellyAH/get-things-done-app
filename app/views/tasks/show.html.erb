@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @task.description %>
+  </br>
+  <strong>Priority:</strong>
+  <%= @task.priority %>
+</p>
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Return to Homepage', root_path %>

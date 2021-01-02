@@ -9,12 +9,8 @@ class ThoughtsController < ApplicationController
 
   # GET /thoughts/1
   # GET /thoughts/1.json
+  # Delegating to find tasks id into private methods set_thought
   def show
-  end
-
-  # GET /thoughts/new
-  def new
-    @thought = Thought.new
   end
 
   # GET /thoughts/1/edit
@@ -25,14 +21,11 @@ class ThoughtsController < ApplicationController
   # POST /thoughts.json
   def create
     @thought = Thought.new(thought_params)
-
     respond_to do |format|
       if @thought.save
-        format.html { redirect_to @thought, notice: 'Thought was successfully created.' }
-        format.json { render :show, status: :created, location: @thought }
+        format.html { redirect_to root_path, notice: 'Thought was successfully created.' }
       else
-        format.html { render :new }
-        format.json { render json: @thought.errors, status: :unprocessable_entity }
+        format.html { redirect_to root_path, alert: "Thought failed to be created because: #{@thought.errors.full_messages.join(",")}."  }
       end
     end
   end
@@ -56,11 +49,12 @@ class ThoughtsController < ApplicationController
   def destroy
     @thought.destroy
     respond_to do |format|
-      format.html { redirect_to thoughts_url, notice: 'Thought was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Thought was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
+  # TODO: fix indents
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_thought

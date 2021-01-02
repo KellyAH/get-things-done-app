@@ -1,14 +1,13 @@
 <h1>Welcome to The Get Things Done App.</h1>
 
-</br>
-</br>
-</br>
+<p id="notice"><%= notice %></p>
+<p id="alert"><%= alert %></p>
 
-<%= form_with(url: "/thoughts", method: "post") do %>
-  <%= label_tag(:q, "Write 3 or more things on your mind now.") %>
-  </br>
-  <%= text_field_tag(:q) %>
-  <%= submit_tag("Submit") %>
+
+</br>
+<%= form_with model: @new_thought do |form| %>
+  <%= form.text_field :description %>
+  <%= form.button "Create" %>
 <% end %>
 
 <table>
@@ -27,6 +26,29 @@
       <td><%= link_to 'Show', thought %></td>
       <td><%= link_to 'Edit', edit_thought_path(thought) %></td>
       <td><%= link_to 'Destroy', thought, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Turn into a Task', new_task_path(thought_id: thought.id) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
+<table>
+  <thead>
+  <tr>
+    <th>My Tasks</th>
+    <th colspan="1">Priority</th>
+  </tr>
+  </thead>
+
+  </br>
+  <tbody>
+  <% @tasks.each do |task| %>
+    <tr>
+      <td><%= task.description %></td>
+      <td><%= task.priority %></td>
+      <td><%= link_to 'Edit', edit_task_path(task) %></td>
+      <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
   </tbody>

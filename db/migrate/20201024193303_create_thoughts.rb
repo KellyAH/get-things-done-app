@@ -1,12 +1,11 @@
 class CreateThoughts < ActiveRecord::Migration[6.0]
   def change
     create_table :thoughts do |t|
-      t.string :description,
-      t.has_one :user_category
+      t.string :description
+      t.references :user_category
       t.date :due_date
-      t.column :priority, :string
-      t.column :status, :string
-
+      t.string :priority
+      t.string :status
       t.timestamps
     end
   end
