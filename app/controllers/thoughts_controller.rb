@@ -9,6 +9,7 @@ class ThoughtsController < ApplicationController
 
   # GET /thoughts/1
   # GET /thoughts/1.json
+  # Delegating to find tasks id into private methods set_thought
   def show
   end
 
