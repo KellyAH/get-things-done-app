@@ -4,6 +4,7 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new(priority: "medium")
+    # handle creating a task from a thought
     if params[:thought_id]
       thought = Thought.find(params[:thought_id])
       @task.description = thought.description
