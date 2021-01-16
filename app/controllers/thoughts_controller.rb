@@ -44,7 +44,11 @@ class ThoughtsController < ApplicationController
         end
         redirect_to root_path, notice: notice
       else
-        render :new
+        # NOTE: triggers when saving a thought fails.
+        # Test via setting if !@thought.save
+        alert = 'Thought failed to be saved.'
+        redirect_to new_thought_path, alert: alert
+        # TODO: preserve description when new page is rerendered
       end
     end
   end
