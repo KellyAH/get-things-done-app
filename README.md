@@ -7,7 +7,15 @@ See [planning doc](https://docs.google.com/document/d/1RIufe3PNcNIkB4iJLFXdbU5d5
 Database diagram https://dbdiagram.io/d/5f9b12403a78976d7b79bc81
 
 ### Development
-	See Gemfile 
 
+#### Setting up your local environment
+1. clone repo
+1. check your local machine has the correct version of ruby installed (ruby '2.6.5') : `ruby -v`
+2. install dependencies: `bundle install`
+2. build database and seed data: `rails db:create db:migrate db:seed`
+1. start rails server: `rails s`
+1. go to frontend: `http://localhost:3000/`
+
+#### Updating your local environment with DB changes
 When any database changes are made (E.g. migrations, schema.db updates etc.) local Database must be destroyed and rebuilt via: 
 `rails db:reset` which is an alias for `rails db:drop db:create db:migrate`
