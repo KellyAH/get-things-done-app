@@ -8,6 +8,7 @@ class TaskTest < ActiveSupport::TestCase
 end
 
 class TaskModelTest < Minitest::Test
+  # Testing Task.new and not Task.create because Task.new is used the TasksController.
   def test_task_created_when_required_data_exists
     record_created = Task.new(description: 'blahfoobar', priority: 'low').save
     assert(record_created == true)

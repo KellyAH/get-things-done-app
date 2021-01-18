@@ -20,7 +20,7 @@ class ThoughtsControllerTest < ActionDispatch::IntegrationTest
       post thoughts_url, params: { thought: { description: @thought.description } }
     end
 
-    assert_redirected_to thought_url(Thought.last)
+    assert_redirected_to root_url
   end
 
   test "should show thought" do
@@ -43,6 +43,6 @@ class ThoughtsControllerTest < ActionDispatch::IntegrationTest
       delete thought_url(@thought)
     end
 
-    assert_redirected_to thoughts_url
+    assert_redirected_to root_url
   end
 end

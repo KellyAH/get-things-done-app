@@ -13,7 +13,7 @@ When any database changes are made (E.g. migrations, schema.db updates etc.) loc
 `rails db:reset` which is an alias for `rails db:drop db:create db:migrate`
 
 ### Tests
-minitest model unit tests
+#### minitest model unit tests
 
 run a test file:
 ```
@@ -27,3 +27,6 @@ TBD
 run tests in a directory
 TBD
 
+#### controller tests
+`bin/rails test test/controllers/homepage_controller_test.rb`
+`bin/rails test test/controllers/thoughts_controller_test.rb`
