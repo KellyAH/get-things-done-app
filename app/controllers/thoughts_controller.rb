@@ -13,6 +13,16 @@ class ThoughtsController < ApplicationController
   def show
   end
 
+  # GET /thoughts/new
+  def new
+    @thought = Thought.new
+    # handle creating a thought from a task
+    if params[:task_id]
+      task = Task.find(params[:task_id])
+      @thought.description = task.description
+    end
+  end
+
   # GET /thoughts/1/edit
   def edit
   end
@@ -20,12 +30,25 @@ class ThoughtsController < ApplicationController
   # POST /thoughts
   # POST /thoughts.json
   def create
-    @thought = Thought.new(thought_params)
-    respond_to do |format|
+    # This makes the create task and destroy thought into 1 commit transaction so if either fails
+    # the whole action of create and destroy doesn't leave data in a bad area.
+    ActiveRecord::Base.transaction do
+      @thought = Thought.new(thought_params)
       if @thought.save
-        format.html { redirect_to root_path, notice: 'Thought was successfully created.' }
+        if params[:task_id].present?
+          task = Task.find(params[:task_id])
+          task.destroy
+          notice = 'Task was deleted and a Thought was successfully created'
+        else
+          notice = 'Thought was successfully created.'
+        end
+        redirect_to root_path, notice: notice
       else
-        format.html { redirect_to root_path, alert: "Thought failed to be created because: #{@thought.errors.full_messages.join(",")}."  }
+        # NOTE: triggers when saving a thought fails.
+        # Test via setting if !@thought.save
+        alert = 'Thought failed to be saved.'
+        redirect_to new_thought_path, alert: alert
+        # TODO: preserve description when new page is rerendered
       end
     end
   end

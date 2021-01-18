@@ -17,6 +17,8 @@
   </div>
 
   <div class="actions">
+    <!-- pass task id data so a task can be deleted in POST call to create thought -->
+    <%= hidden_field_tag(:task_id, params[:task_id]) %>
     <%= form.submit %>
   </div>
 <% end %>

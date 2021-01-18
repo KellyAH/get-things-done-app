@@ -4,6 +4,7 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new(priority: "medium")
+    # handle creating a task from a thought
     if params[:thought_id]
       thought = Thought.find(params[:thought_id])
       @task.description = thought.description
@@ -34,7 +35,13 @@ class TasksController < ApplicationController
         end
         redirect_to root_path, notice: notice
       else
-        render :new
+        # ASK Lailson why does this not work with render?
+        # render :new
+        # NOTE: triggers when saving a thought fails.
+        # # Test via setting if !@thought.save
+        alert = 'Task failed to be saved.'
+        redirect_to new_task_path, alert: alert
+        # TODO: preserve description and priorioty when new page is rerendered
       end
     end
   end
