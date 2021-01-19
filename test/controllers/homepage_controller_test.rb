@@ -1,8 +1,8 @@
 require 'test_helper'
 
 class HomepageControllerTest < ActionDispatch::IntegrationTest
-  test "should get greeting" do
-    get homepage_greeting_url
+  test "homepage should load" do
+    get root_url
     assert_response :success
   end
 

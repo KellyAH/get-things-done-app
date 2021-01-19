@@ -11,3 +11,22 @@ Database diagram https://dbdiagram.io/d/5f9b12403a78976d7b79bc81
 
 When any database changes are made (E.g. migrations, schema.db updates etc.) local Database must be destroyed and rebuilt via: 
 `rails db:reset` which is an alias for `rails db:drop db:create db:migrate`
+
+### Tests
+#### minitest model unit tests
+
+run a test file:
+```
+bin/rails test test/models/thought_test.rb
+bin/rails test test/models/task_test.rb
+```
+
+run all model tests
+TBD
+
+run tests in a directory
+TBD
+
+#### controller tests
+`bin/rails test test/controllers/homepage_controller_test.rb`
+`bin/rails test test/controllers/thoughts_controller_test.rb`
