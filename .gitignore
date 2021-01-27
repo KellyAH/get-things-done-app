@@ -36,3 +36,4 @@ yarn-debug.log*
 .yarn-integrity
 # Ignore ide file
 .idea/
+coverage
